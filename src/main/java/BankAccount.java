@@ -104,6 +104,8 @@ public class BankAccount {
     public String getAccountType() {
         return this.accountType;
     }
-
+    public void setAccountType(String newAccountType) {
+        this.accountType = newAccountType;
+    }
 
 }
