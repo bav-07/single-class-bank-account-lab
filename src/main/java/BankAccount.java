@@ -32,6 +32,7 @@ public class BankAccount {
     }
 
     public String withdrawal(double withdrawalAmount) {
+        String withdrawalAmountText;
         if (withdrawalAmount < 0) {
             return "Error: Cannot withdraw negative quantities.";
         }
@@ -44,7 +45,16 @@ public class BankAccount {
             }
             else {
                 this.balance -= withdrawalAmount;
-                return "Success. You have withdrawn £" + withdrawalAmount + ". Your account contains £" + this.balance + ".";
+                if (withdrawalAmount % 1 == 0) {
+                    withdrawalAmountText = String.valueOf(withdrawalAmount) + "0";
+                }
+                else if (withdrawalAmount % 0.5 == 0){
+                    withdrawalAmountText = String.valueOf(withdrawalAmount) + "0";
+                }
+                else {
+                    withdrawalAmountText = String.valueOf(withdrawalAmount);
+                }
+                return "Success. You have withdrawn £" + withdrawalAmountText + ". Your account contains £" + this.balance + ".";
             }
         }
     }

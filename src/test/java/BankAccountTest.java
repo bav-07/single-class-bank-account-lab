@@ -100,7 +100,13 @@ public class BankAccountTest {
         assertThat(account.deposit(0)).isEqualTo("Error: Please specify an amount to deposit.");
     }
 
-
+    @Test
+    public void canWithdrawAmount() {
+        assertThat(account.withdrawal(1000)).isEqualTo("Error: You are trying to withdraw more than your account balance.");
+        account.setBalance(5000);
+        assertThat(account.withdrawal(1000)).isEqualTo("Success. You have withdrawn £1000.00. Your account contains £4000.0.");
+        System.out.println(account.withdrawal(1000));
+    }
 
 
 }
