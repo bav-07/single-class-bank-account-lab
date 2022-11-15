@@ -107,6 +107,11 @@ public class BankAccountTest {
     }
 
     @Test
+    public void hasOverdraft() {
+        assertThat(account.getOverdraft()).isEqualTo(0);
+    }
+
+    @Test
     public void canDepositAmount() {
         assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.00.");
         assertThat(account.getBalance()).isEqualTo(1000);
