@@ -48,8 +48,8 @@ public class BankAccount {
         }
          */
         else {
-            if (withdrawalAmount > this.balance) {
-                return "Error: You are trying to withdraw more than your account balance.";
+            if (this.balance - withdrawalAmount < - this.overdraft) {
+                return "Error: Your account overdraft does not permit a withdrawal of this amount.";
             }
             else {
                 this.balance -= withdrawalAmount;

@@ -18,6 +18,7 @@ public class BankAccountTest {
                 12345678,
                 "Current");
         account.setBalance(0);
+        account.setOverdraft(0);
     }
 
     @Test
@@ -130,7 +131,7 @@ public class BankAccountTest {
 
     @Test
     public void canWithdrawAmount() {
-        assertThat(account.withdrawal(1000)).isEqualTo("Error: You are trying to withdraw more than your account balance.");
+        assertThat(account.withdrawal(1000)).isEqualTo("Error: Your account overdraft does not permit a withdrawal of this amount.");
         account.setBalance(5000);
         assertThat(account.withdrawal(1000)).isEqualTo("Success. You have withdrawn £1000.00. Your account contains £4000.00.");
         assertThat(account.withdrawal(1000.53)).isEqualTo("Success. You have withdrawn £1000.53. Your account contains £2999.47.");
@@ -139,6 +140,11 @@ public class BankAccountTest {
         assertThat(account.withdrawal(-240)).isEqualTo("Error: Cannot withdraw negative quantities.");
         assertThat(account.withdrawal(240.3283)).isEqualTo("Success. You have withdrawn £240.33. Your account contains £2658.64.");
         assertThat(account.withdrawal(4.2222)).isEqualTo("Success. You have withdrawn £4.22. Your account contains £2654.42.");
+        account.setBalance(0);
+        account.setOverdraft(1000);
+        assertThat(account.withdrawal(1100)).isEqualTo("Error: Your account overdraft does not permit a withdrawal of this amount.");
+        assertThat(account.withdrawal(500)).isEqualTo("Success. You have withdrawn £500.00. Your account contains £-500.00.");
+        assertThat(account.withdrawal(400)).isEqualTo("Success. You have withdrawn £400.00. Your account contains £-900.00.");
     }
 
     @Test
