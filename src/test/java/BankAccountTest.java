@@ -92,7 +92,7 @@ public class BankAccountTest {
 
     @Test
     public void canDepositAmount() {
-        assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.0.");
+        assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.00.");
         assertThat(account.getBalance()).isEqualTo(1000);
         assertThat(account.deposit(240.54)).isEqualTo("Success. Your account contains £1240.54.");
         assertThat(account.getBalance()).isEqualTo(1240.54);
@@ -108,6 +108,7 @@ public class BankAccountTest {
         System.out.println(account.withdrawal(1000));
         assertThat(account.withdrawal(1000.53)).isEqualTo("Success. You have withdrawn £1000.53. Your account contains £1999.47.");
         assertThat(account.withdrawal(100.50)).isEqualTo("Success. You have withdrawn £100.50. Your account contains £1898.97.");
+
     }
 
 
