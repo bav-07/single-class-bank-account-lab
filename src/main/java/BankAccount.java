@@ -19,14 +19,31 @@ public class BankAccount {
 
     // METHODS
     public String deposit(double depositAmount) {
-        if (depositAmount <= 0) {
+        if (depositAmount < 0) {
             return "Error: Cannot deposit negative quantities.";
+        }
+        else if (depositAmount == 0) {
+            return "Error: Please specify an amount to deposit.";
         }
         else {
             this.balance += depositAmount;
-            return "Success. Your account contains £" + this.balance;
+            return "Success. Your account contains £" + this.balance + ".";
         }
     }
+
+    public String withdrawal(double withdrawalAmount) {
+        if (withdrawalAmount < 0) {
+            return "Error: Cannot withdraw negative quantities.";
+        }
+        else if (withdrawalAmount == 0) {
+            return "Error: Please specify an amount to deposit.";
+        }
+        else {
+            this.balance -= withdrawalAmount;
+            return "Success. You have withdrawn £" + withdrawalAmount + ". Your account contains £" + this.balance + ".";
+        }
+    }
+
 
     // GETTERS & SETTERS
     public String getFirstName() {

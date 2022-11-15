@@ -92,12 +92,14 @@ public class BankAccountTest {
 
     @Test
     public void canDepositAmount() {
-        assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.0");
+        assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.0.");
         assertThat(account.getBalance()).isEqualTo(1000);
-        assertThat(account.deposit(240.54)).isEqualTo("Success. Your account contains £1240.54");
+        assertThat(account.deposit(240.54)).isEqualTo("Success. Your account contains £1240.54.");
         assertThat(account.getBalance()).isEqualTo(1240.54);
         assertThat(account.deposit(-245)).isEqualTo("Error: Cannot deposit negative quantities.");
+        assertThat(account.deposit(0)).isEqualTo("Error: Please specify an amount to deposit.");
     }
+
 
 
 
