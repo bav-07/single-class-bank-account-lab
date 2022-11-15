@@ -9,6 +9,7 @@ public class BankAccountTest {
 
     private BankAccount account;
 
+    // Set up initial variables for each test
     @BeforeEach
     public void setUp() {
         account = new BankAccount(
@@ -20,6 +21,8 @@ public class BankAccountTest {
         account.setBalance(0);
         account.setOverdraft(0);
     }
+
+    // Test all getters and setters
 
     @Test
     public void hasFirstName() {
@@ -118,6 +121,8 @@ public class BankAccountTest {
         assertThat(account.getOverdraft()).isEqualTo(1000);
     }
 
+    // Test deposit function
+    // Check if account balance updates accurately, and check that no actions are taken in the case that a negative/zero amount is deposited
     @Test
     public void canDepositAmount() {
         assertThat(account.deposit(1000.0000)).isEqualTo("Success. Your account contains £1000.00.");
@@ -129,6 +134,9 @@ public class BankAccountTest {
         assertThat(account.deposit(0)).isEqualTo("Error: Please specify an amount to deposit.");
     }
 
+    // Test the withdrawal function
+    // Check if the withdrawal works as expected for both whole and decimal numbers
+    // Ensure that negative amounts are not withdrawn and that the account does not exceed its overdraft limit
     @Test
     public void canWithdrawAmount() {
         assertThat(account.withdrawal(1000)).isEqualTo("Error: Your account overdraft does not permit a withdrawal of this amount.");
@@ -147,6 +155,7 @@ public class BankAccountTest {
         assertThat(account.withdrawal(400)).isEqualTo("Success. You have withdrawn £400.00. Your account contains £-900.00.");
     }
 
+    // Check if interest is paid equally, and that it doubles for a Savings account
     @Test
     public void canPayInterest() {
         account.setBalance(100);

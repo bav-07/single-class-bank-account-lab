@@ -21,6 +21,8 @@ public class BankAccount {
     }
 
     // METHODS
+
+    // Deposits the specified amount, as long as it is positive and not 0.
     public String deposit(double depositAmount) {
         if (depositAmount < 0) {
             return "Error: Cannot deposit negative quantities.";
@@ -34,6 +36,7 @@ public class BankAccount {
         }
     }
 
+    // Withdraws an amount, as long as it is positive, not 0, and would not cause the account to exceed the overdraft limit
     public String withdrawal(double withdrawalAmount) {
         String withdrawalAmountText;
         if (withdrawalAmount < 0) {
@@ -42,11 +45,6 @@ public class BankAccount {
         else if (withdrawalAmount == 0) {
             return "Error: Please specify an amount to deposit.";
         }
-        /*
-        else if ((float)(withdrawalAmount % 0.01) != 0f) {
-            return "Error: Please specify an amount in pounds and pence (to 2 decimal places).";
-        }
-         */
         else {
             if (this.balance - withdrawalAmount < - this.overdraft) {
                 return "Error: Your account overdraft does not permit a withdrawal of this amount.";
@@ -58,6 +56,7 @@ public class BankAccount {
         }
     }
 
+    // Pays interest to account (doubling if accountType is "Savings"), unless the interest provided is negative.
     public String payInterest(double interestPercent) {
         if (interestPercent < 0) {
             return "Error: Cannot have a negative interest.";
