@@ -110,7 +110,19 @@ public class BankAccountTest {
         assertThat(account.withdrawal(100.50)).isEqualTo("Success. You have withdrawn £100.50. Your account contains £2898.97.");
         assertThat(account.withdrawal(0)).isEqualTo("Error: Please specify an amount to deposit.");
         assertThat(account.withdrawal(-240)).isEqualTo("Error: Cannot withdraw negative quantities.");
+        assertThat(account.withdrawal(240.3283)).isEqualTo("Success. You have withdrawn £240.33. Your account contains £2658.64.");
+        assertThat(account.withdrawal(4.2222)).isEqualTo("Success. You have withdrawn £4.22. Your account contains £2654.42.");
     }
 
+    @Test
+    public void canPayInterest() {
+        account.setBalance(100);
+        assertThat(account.payInterest(-2)).isEqualTo("Error: Cannot have a negative interest.");
+        assertThat(account.payInterest(1.2)).isEqualTo("Success. Interest of 1.20% incremented onto balance. Your current balance is £101.20");
+        account.setBalance(100);
+        assertThat(account.payInterest(1)).isEqualTo("Success. Interest of 1.00% incremented onto balance. Your current balance is £101.00");
+        account.setBalance(100);
+        assertThat(account.payInterest(2.463463)).isEqualTo("Success. Interest of 2.46% incremented onto balance. Your current balance is £102.46");
+    }
 
 }

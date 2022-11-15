@@ -39,6 +39,11 @@ public class BankAccount {
         else if (withdrawalAmount == 0) {
             return "Error: Please specify an amount to deposit.";
         }
+        /*
+        else if ((float)(withdrawalAmount % 0.01) != 0f) {
+            return "Error: Please specify an amount in pounds and pence (to 2 decimal places).";
+        }
+         */
         else {
             if (withdrawalAmount > this.balance) {
                 return "Error: You are trying to withdraw more than your account balance.";
@@ -48,6 +53,14 @@ public class BankAccount {
                 return "Success. You have withdrawn £" + String.format("%.2f", withdrawalAmount) + ". Your account contains £" + String.format("%.2f", this.balance) + ".";
             }
         }
+    }
+
+    public String payInterest(double interestPercent) {
+        if (interestPercent < 0) {
+            return "Error: Cannot have a negative interest.";
+        }
+        this.balance *= 1 + (interestPercent / (double)100);
+        return "Success. Interest of " + String.format("%.2f", interestPercent) + "% incremented onto balance. Your current balance is £" + String.format("%.2f", this.balance);
     }
 
 
