@@ -39,8 +39,13 @@ public class BankAccount {
             return "Error: Please specify an amount to deposit.";
         }
         else {
-            this.balance -= withdrawalAmount;
-            return "Success. You have withdrawn £" + withdrawalAmount + ". Your account contains £" + this.balance + ".";
+            if (withdrawalAmount > this.balance) {
+                return "Error: You are trying to withdraw more than your account balance.";
+            }
+            else {
+                this.balance -= withdrawalAmount;
+                return "Success. You have withdrawn £" + withdrawalAmount + ". Your account contains £" + this.balance + ".";
+            }
         }
     }
 
