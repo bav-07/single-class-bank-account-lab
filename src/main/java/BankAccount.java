@@ -9,6 +9,7 @@ public class BankAccount {
     private int accountNumber;
     private double balance = 0;
     private String accountType;
+    private double overdraft = 0;
 
     // CONSTRUCTOR
     public BankAccount(String firstName, String lastName, LocalDate dateOfBirth, int accountNumber, String accountType) {
@@ -110,6 +111,13 @@ public class BankAccount {
     }
     public void setAccountType(String newAccountType) {
         this.accountType = newAccountType;
+    }
+
+    public double getOverdraft() {
+        return this.overdraft;
+    }
+    public void setOverdraft(double newOverdraft) {
+        this.overdraft = newOverdraft;
     }
 
 }
