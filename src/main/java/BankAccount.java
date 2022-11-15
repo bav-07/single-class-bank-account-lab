@@ -66,7 +66,7 @@ public class BankAccount {
             interestPercent *= 2;
         }
         this.balance *= 1 + (interestPercent / (double)100);
-        return "Success. Interest of " + String.format("%.2f", interestPercent) + "% incremented onto balance. Your current balance is £" + String.format("%.2f", this.balance);
+        return "Success. Interest of " + String.format("%.2f", interestPercent) + "% incremented onto balance. Your new balance is £" + String.format("%.2f", this.balance);
     }
 
     // GETTERS & SETTERS

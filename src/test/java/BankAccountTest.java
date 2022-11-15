@@ -134,11 +134,16 @@ public class BankAccountTest {
     public void canPayInterest() {
         account.setBalance(100);
         assertThat(account.payInterest(-2)).isEqualTo("Error: Cannot have a negative interest.");
-        assertThat(account.payInterest(1.2)).isEqualTo("Success. Interest of 1.20% incremented onto balance. Your current balance is £101.20");
+        assertThat(account.payInterest(1.2)).isEqualTo("Success. Interest of 1.20% incremented onto balance. Your new balance is £101.20");
         account.setBalance(100);
-        assertThat(account.payInterest(1)).isEqualTo("Success. Interest of 1.00% incremented onto balance. Your current balance is £101.00");
+        assertThat(account.payInterest(1)).isEqualTo("Success. Interest of 1.00% incremented onto balance. Your new balance is £101.00");
         account.setBalance(100);
-        assertThat(account.payInterest(2.463463)).isEqualTo("Success. Interest of 2.46% incremented onto balance. Your current balance is £102.46");
+        assertThat(account.payInterest(2.463463)).isEqualTo("Success. Interest of 2.46% incremented onto balance. Your new balance is £102.46");
+        account.setBalance(100);
+        account.setAccountType("Savings");
+        assertThat(account.payInterest(1.2)).isEqualTo("Success. Interest of 2.40% incremented onto balance. Your new balance is £102.40");
+        account.setBalance(100);
+        assertThat(account.payInterest(3.452562)).isEqualTo("Success. Interest of 6.91% incremented onto balance. Your new balance is £106.91");
     }
 
 }
