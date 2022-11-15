@@ -61,6 +61,10 @@ public class BankAccount {
         if (interestPercent < 0) {
             return "Error: Cannot have a negative interest.";
         }
+        // Double the usual interest rate for a savings account
+        if (this.accountType == "Savings") {
+            interestPercent *= 2;
+        }
         this.balance *= 1 + (interestPercent / (double)100);
         return "Success. Interest of " + String.format("%.2f", interestPercent) + "% incremented onto balance. Your current balance is £" + String.format("%.2f", this.balance);
     }
