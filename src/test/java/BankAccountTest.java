@@ -15,7 +15,8 @@ public class BankAccountTest {
                 "Bav",
                 "Nagarajah",
                 LocalDate.of(2000,1,25),
-                12345678);
+                12345678,
+                "Current");
         account.setBalance(0);
     }
 

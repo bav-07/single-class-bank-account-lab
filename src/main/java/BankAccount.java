@@ -8,13 +8,15 @@ public class BankAccount {
     private LocalDate dateOfBirth;
     private int accountNumber;
     private double balance = 0;
+    private String accountType;
 
     // CONSTRUCTOR
-    public BankAccount(String firstName, String lastName, LocalDate dateOfBirth, int accountNumber) {
+    public BankAccount(String firstName, String lastName, LocalDate dateOfBirth, int accountNumber, String accountType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.accountNumber  = accountNumber;
+        this.accountType = accountType;
     }
 
     // METHODS
@@ -62,7 +64,6 @@ public class BankAccount {
         this.balance *= 1 + (interestPercent / (double)100);
         return "Success. Interest of " + String.format("%.2f", interestPercent) + "% incremented onto balance. Your current balance is £" + String.format("%.2f", this.balance);
     }
-
 
     // GETTERS & SETTERS
     public String getFirstName() {
