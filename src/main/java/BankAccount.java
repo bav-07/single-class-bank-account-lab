@@ -45,16 +45,19 @@ public class BankAccount {
             }
             else {
                 this.balance -= withdrawalAmount;
+                /*
                 if (withdrawalAmount % 1 == 0) {
                     withdrawalAmountText = String.valueOf(withdrawalAmount) + "0";
                 }
-                else if (withdrawalAmount % 0.5 == 0){
+                else if ((double)withdrawalAmount % (double)0.1 == 0){
                     withdrawalAmountText = String.valueOf(withdrawalAmount) + "0";
+                    System.out.println(withdrawalAmount);
                 }
                 else {
                     withdrawalAmountText = String.valueOf(withdrawalAmount);
                 }
-                return "Success. You have withdrawn £" + withdrawalAmountText + ". Your account contains £" + this.balance + ".";
+                 */
+                return "Success. You have withdrawn £" + String.format("%.2f", withdrawalAmount) + ". Your account contains £" + String.format("%.2f", this.balance) + ".";
             }
         }
     }

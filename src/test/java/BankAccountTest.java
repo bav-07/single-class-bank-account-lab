@@ -104,8 +104,10 @@ public class BankAccountTest {
     public void canWithdrawAmount() {
         assertThat(account.withdrawal(1000)).isEqualTo("Error: You are trying to withdraw more than your account balance.");
         account.setBalance(5000);
-        assertThat(account.withdrawal(1000)).isEqualTo("Success. You have withdrawn £1000.00. Your account contains £4000.0.");
+        assertThat(account.withdrawal(1000)).isEqualTo("Success. You have withdrawn £1000.00. Your account contains £4000.00.");
         System.out.println(account.withdrawal(1000));
+        assertThat(account.withdrawal(1000.53)).isEqualTo("Success. You have withdrawn £1000.53. Your account contains £1999.47.");
+        assertThat(account.withdrawal(100.50)).isEqualTo("Success. You have withdrawn £100.50. Your account contains £1898.97.");
     }
 
 
