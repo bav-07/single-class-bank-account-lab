@@ -96,6 +96,7 @@ public class BankAccountTest {
         assertThat(account.getBalance()).isEqualTo(1000);
         assertThat(account.deposit(240.54)).isEqualTo("Success. Your account contains £1240.54.");
         assertThat(account.getBalance()).isEqualTo(1240.54);
+        assertThat(account.deposit(240.36)).isEqualTo("Success. Your account contains £1480.90.");
         assertThat(account.deposit(-245)).isEqualTo("Error: Cannot deposit negative quantities.");
         assertThat(account.deposit(0)).isEqualTo("Error: Please specify an amount to deposit.");
     }
@@ -105,10 +106,10 @@ public class BankAccountTest {
         assertThat(account.withdrawal(1000)).isEqualTo("Error: You are trying to withdraw more than your account balance.");
         account.setBalance(5000);
         assertThat(account.withdrawal(1000)).isEqualTo("Success. You have withdrawn £1000.00. Your account contains £4000.00.");
-        System.out.println(account.withdrawal(1000));
-        assertThat(account.withdrawal(1000.53)).isEqualTo("Success. You have withdrawn £1000.53. Your account contains £1999.47.");
-        assertThat(account.withdrawal(100.50)).isEqualTo("Success. You have withdrawn £100.50. Your account contains £1898.97.");
-
+        assertThat(account.withdrawal(1000.53)).isEqualTo("Success. You have withdrawn £1000.53. Your account contains £2999.47.");
+        assertThat(account.withdrawal(100.50)).isEqualTo("Success. You have withdrawn £100.50. Your account contains £2898.97.");
+        assertThat(account.withdrawal(0)).isEqualTo("Error: Please specify an amount to deposit.");
+        assertThat(account.withdrawal(-240)).isEqualTo("Error: Cannot withdraw negative quantities.");
     }
 
 
