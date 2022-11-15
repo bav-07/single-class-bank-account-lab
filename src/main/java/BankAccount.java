@@ -101,6 +101,9 @@ public class BankAccount {
         this.balance = newBalance;
     }
 
+    public String getAccountType() {
+        return this.accountType;
+    }
 
 
 }
