@@ -18,8 +18,6 @@ public class BankAccountTest {
                 LocalDate.of(2000,1,25),
                 12345678,
                 "Current");
-        account.setBalance(0);
-        account.setOverdraft(0);
     }
 
     // Test all getters and setters

@@ -7,9 +7,9 @@ public class BankAccount {
     private String lastName;
     private LocalDate dateOfBirth;
     private int accountNumber;
-    private double balance = 0;
+    private double balance;
     private String accountType;
-    private double overdraft = 0;
+    private double overdraft;
 
     // CONSTRUCTOR
     public BankAccount(String firstName, String lastName, LocalDate dateOfBirth, int accountNumber, String accountType) {
@@ -18,6 +18,8 @@ public class BankAccount {
         this.dateOfBirth = dateOfBirth;
         this.accountNumber  = accountNumber;
         this.accountType = accountType;
+        this.balance = 0;
+        this.overdraft = 0;
     }
 
     // METHODS
